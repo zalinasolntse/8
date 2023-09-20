@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дильмухамедова Залина</title>
+<style>
+    .error-message {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <form onsubmit="validateForm(event)">
+        <label for="passport">Паспорт (две латинские буквы):</label>
+        <input type="text" id="passport">
+        <br>
+        <label for="passportNumber">Номер паспорта (7 цифр):</label>
+        <input type="text" id="passportNumber">
+        <br>
+        <label for="answerSheet">Номер бланка ответа (7 цифр):</label>
+        <input type="text" id="answerSheet">
+        <br>
+        <label for="language">Предмет (язык):</label>
+        <select id="language">
+            <option value="">Выберите язык</option>
+            <option value="belarusian">Белорусский</option>
+            <option value="russian">Русский</option>
+        </select>
+        <br>
+        <label for="subject">Предмет (математика или физика):</label>
+        <select id="subject">
+            <option value="">Выберите предмет</option>
+            <option value="math">Математика</option>
+            <option value="physics">Физика</option>
+        </select>
+        <br>
+        <label for="captcha">Код на картинке (6 цифр):</label>
+        <input type="text" id="captcha">
+        <br>
+        <img src="Снимок2.PNG" alt="Captcha Image" id="captchaImage">
+        <br>
+        <button type="submit">Отправить</button>
+        <br>
+        <div id="error-message" class="error-message"></div>
+    </form>
+  
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+          
+            var passport = document.getElementById("passport").value.trim();
+            var passportNumber = document.getElementById("passportNumber").value.trim();
+            var answerSheet = document.getElementById("answerSheet").value.trim();
+            var language = document.getElementById("language").value;
+            var subject = document.getElementById("subject").value;
+            var captcha = document.getElementById("captcha").value.trim();
+            var errorMessage = document.getElementById("error-message");
+            var isValid = true;
+          
+            if (!/^A-Za-z{2}$/.test(passport)) {
+                errorMessage.textContent = "Пожалуйста, введите две латинские буквы для поля паспорт.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (!/^\d{7}$/.test(passportNumber)) {
+                errorMessage.textContent = "Пожалуйста, введите 7 цифр для поля номер паспорта.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (!/^\d{7}$/.test(answerSheet)) {
+                errorMessage.textContent = "Пожалуйста, введите 7 цифр для поля номер бланка ответа.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (language === "") {
+                errorMessage.textContent = "Пожалуйста, выберите язык для поля предмет.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (subject === "") {
+                errorMessage.textContent = "Пожалуйста, выберите предмет для поля предмет.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (!/^\d{6}$/.test(captcha)) {
+                errorMessage.textContent = "Пожалуйста, введите 6 цифр для поля код на картинке.";
+                errorMessage.style.display = "block";
+                isValid = false;
+            }
+          
+            if (isValid) {
+                errorMessage.style.display = "none";
+                // отправка данных или выполнение других действий
+            }
+        }
+    </script>
+</body>
+</html>

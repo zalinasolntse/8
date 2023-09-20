@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дильмухамедова Залина</title> 
+<style>
+    .error-message {
+        display: none;
+        color: red;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <form>
+        <label for="a">Введите a:</label>
+        <input type="text" id="a">
+        <br>
+        <label for="b">Введите b:</label>
+        <input type="text" id="b">
+        <br>
+        <label for="c">Введите c:</label>
+        <input type="text" id="c">
+        <br>
+        <button type="button" onclick="calculateAverage()">Вычислить</button>
+        <br>
+        <label for="result">Среднее арифметическое:</label>
+        <input type="text" id="result" readonly>
+        <br>
+        <div id="error-message" class="error-message"></div>
+    </form>
+  
+    <script>
+        function calculateAverage() {
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            var c = parseFloat(document.getElementById("c").value);
+            var resultElement = document.getElementById("result");
+            var errorMessage = document.getElementById("error-message");
+          
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                errorMessage.textContent = "Пожалуйста, введите числовые значения для всех полей.";
+                errorMessage.style.display = "block";
+                resultElement.value = "";
+            } else {
+                errorMessage.style.display = "none";
+                var average = (a + b + c) / 3;
+                resultElement.value = average;
+            }
+        }
+    </script>
+</body>
+</html>

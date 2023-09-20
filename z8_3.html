@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дильмухамедова Залина</title> 
+    <style>
+        #line {
+            position: sticky;
+            width: 80%;
+            height: 2px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <text>Линия:</text> <br><br>
+    <div id="line"></div> <br><br>
+    <form id="form">
+        <label for="length">Длина:</label>
+        <input type="number" id="length" name="length" min="1" max="100"><br><br>
+        
+        <label for="width">Ширина:</label>
+        <input type="number" id="width" name="width" min="1" max="100"><br><br>
+        
+        <label for="position">Положение:</label>
+        <select id="position" name="position">
+            <option value="left">Влево</option>
+            <option value="center">Центр</option>
+            <option value="right">Вправо</option>
+        </select><br><br>
+        
+        <label for="color">Цвет:</label>
+        <input type="color" id="color" name="color"><br><br>
+        
+        <input type="submit" value="Применить">
+    </form>
+
+    
+
+    <script>
+        var form = document.getElementById('form');
+        var line = document.getElementById('line');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var length = document.getElementById('length').value;
+            var width = document.getElementById('width').value;
+            var position = document.getElementById('position').value;
+            var color = document.getElementById('color').value;
+
+            line.style.width = length + '%';
+            line.style.height = width + 'px';
+            
+            switch (position) {
+                case 'left':
+                    line.style.marginLeft = '0';
+                    line.style.marginRight = 'auto';
+                    break;
+                case 'center':
+                    line.style.marginLeft = 'auto';
+                    line.style.marginRight = 'auto';
+                    break;
+                case 'right':
+                    line.style.marginLeft = 'auto';
+                    line.style.marginRight = '0';
+                    break;
+            }
+
+            line.style.backgroundColor = color;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Дильмухамедова Залина</title> <br><br>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <text>Вариант 6</text> <br><br>
+    <text>Объект:Оптический носитель</text> <br><br>
+    <form id="form">
+        <label for="type">Тип установки:</label>
+        <input type="text" id="type" name="type"><br><br>
+        
+        <label for="interface">Интерфейс подключения:</label>
+        <input type="text" id="interface" name="interface"><br><br>
+        
+        <label for="readSpeed">Максимальная скорость чтения:</label>
+        <input type="number" id="readSpeed" name="readSpeed" min="1" max="52"><br><br>
+        
+        <label for="writeSpeed">Максимальная скорость записи:</label>
+        <input type="number" id="writeSpeed" name="writeSpeed" min="1" max="52"><br><br>
+        
+        <input type="submit" value="Добавить">
+    </form>
+
+    <table id="table">
+        <tr>
+            <th>Тип установки</th>
+            <th>Интерфейс подключения</th>
+            <th>Максимальная скорость чтения</th>
+            <th>Максимальная скорость записи</th>
+        </tr>
+    </table>
+
+    <script>
+        var form = document.getElementById('form');
+        var table = document.getElementById('table');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var type = document.getElementById('type').value;
+            var interface = document.getElementById('interface').value;
+            var readSpeed = document.getElementById('readSpeed').value;
+            var writeSpeed = document.getElementById('writeSpeed').value;
+
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            cell1.innerHTML = type;
+            cell2.innerHTML = interface;
+            cell3.innerHTML = readSpeed;
+            cell4.innerHTML = writeSpeed;
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
